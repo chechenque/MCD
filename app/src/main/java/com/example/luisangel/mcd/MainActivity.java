@@ -10,9 +10,9 @@ import android.widget.TextView;
 public class MainActivity extends AppCompatActivity {
     TextView resultado;
     EditText num1,num2;
-    Button boton;
+    Button boton,boton2,boton3;
     int b,c;
-    MCD mcd;
+    Funciones func;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,7 +23,9 @@ public class MainActivity extends AppCompatActivity {
         num1 = (EditText) findViewById(R.id.editText);
         num2 = (EditText) findViewById(R.id.editText2);
         boton = (Button) findViewById(R.id.Boton);
-        mcd = new MCD();
+        boton2 = (Button) findViewById(R.id.Boton2);
+        boton3 = (Button) findViewById(R.id.Boton3);
+        func = new Funciones();
 
         boton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -32,12 +34,19 @@ public class MainActivity extends AppCompatActivity {
                 String q = "" + num2.getText();
                 b = Integer.parseInt(p);
                 c = Integer.parseInt(q);
-                resultado.setText(""+mcd.mcd(b,c));
+                resultado.setText(""+func.mcd(b,c));
             }
         });
-    }
 
-    public void calcula(View v){
-
+        boton2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String p = "" + num1.getText();
+                String q = "" + num2.getText();
+                b = Integer.parseInt(p);
+                c = Integer.parseInt(q);
+                resultado.setText(""+func.mcm(b,c));
+            }
+        });
     }
 }
